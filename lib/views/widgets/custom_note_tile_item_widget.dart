@@ -30,7 +30,7 @@ class NoteTileItem extends StatelessWidget {
               ),
             ),
             subtitle: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18.0),
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
                 "Build your career with Tharwat Samy",
                 style: TextStyle(
