@@ -18,10 +18,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
+      autovalidateMode: autovalidateMode,
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
             CustomTextFeild(
@@ -46,13 +47,16 @@ class _AddNoteFormState extends State<AddNoteForm> {
             CustomButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
+                  autovalidateMode = AutovalidateMode.disabled;
                   formKey.currentState!.save();
                 } else {
-                  autovalidateMode = AutovalidateMode.always;
+                  setState(() {
+                    autovalidateMode = AutovalidateMode.always;
+                  });
                 }
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
           ],
