@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:tharwat_notes_app/constants.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
-  });
+ final void Function()? onPressed;
+
+  const CustomButton({super.key,required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
