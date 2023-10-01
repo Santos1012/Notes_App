@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tharwat_notes_app/views/widgets/add_note_bottom_sheet_body.dart';
+import 'package:tharwat_notes_app/views/widgets/add_note_bottom_sheet.dart';
 import 'package:tharwat_notes_app/views/widgets/notes_view_body_widget.dart';
 
 class NotesView extends StatelessWidget {
@@ -11,7 +11,7 @@ class NotesView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-            constraints: BoxConstraints.expand(),
+            constraints: const BoxConstraints.expand(),
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16),
