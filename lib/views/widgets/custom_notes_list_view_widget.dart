@@ -16,7 +16,9 @@ class CustomNotesListView extends StatelessWidget {
         return ListView.separated(
           itemCount: notes.length,
           itemBuilder: (context, index) {
-            return const NoteTileItem();
+            return NoteTileItem(
+              note: notes[index],
+            );
           },
           separatorBuilder: (BuildContext context, int index) {
             return const SizedBox(
