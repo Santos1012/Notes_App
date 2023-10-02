@@ -24,7 +24,5 @@ class EditNoteViewBody extends StatelessWidget {
         ),
       ),
     );
-
-   
   }
 }

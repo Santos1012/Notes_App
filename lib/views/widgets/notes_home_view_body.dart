@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tharwat_notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_app_bar_widget.dart';
-import 'package:tharwat_notes_app/views/widgets/custom_notes_list_view_widget.dart';
+import 'package:tharwat_notes_app/views/widgets/notes_list_view_widgets.dart';
 
-class NotesViewBody extends StatefulWidget {
-  const NotesViewBody({super.key});
+class NotesHomeViewBody extends StatefulWidget {
+  const NotesHomeViewBody({super.key});
 
   @override
-  State<NotesViewBody> createState() => _NotesViewBodyState();
+  State<NotesHomeViewBody> createState() => _NotesHomeViewBodyState();
 }
 
-class _NotesViewBodyState extends State<NotesViewBody> {
+class _NotesHomeViewBodyState extends State<NotesHomeViewBody> {
   @override
   void initState() {
     BlocProvider.of<NotesCubit>(context).fetchAllNotes();
@@ -32,7 +32,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
             SizedBox(
               height: 20,
             ),
-            Expanded(child: CustomNotesListView()),
+            Expanded(child: NotesListViewWidgets()),
           ],
         ),
       ),

@@ -3,10 +3,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/edit_note_view.dart';
 
-class NoteTileItem extends StatelessWidget {
+class NoteWidgets extends StatelessWidget {
   final NoteModel note;
 
-  const NoteTileItem({super.key, required this.note});
+  const NoteWidgets({super.key, required this.note});
 
   @override
   Widget build(BuildContext context) {

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tharwat_notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
-import 'package:tharwat_notes_app/views/widgets/custom_note_tile_item_widget.dart';
+import 'package:tharwat_notes_app/views/widgets/note_widgets.dart';
 
-class CustomNotesListView extends StatelessWidget {
-  const CustomNotesListView({super.key});
+class NotesListViewWidgets extends StatelessWidget {
+  const NotesListViewWidgets({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CustomNotesListView extends StatelessWidget {
         return ListView.separated(
           itemCount: notes.length,
           itemBuilder: (context, index) {
-            return NoteTileItem(
+            return NoteWidgets(
               note: notes[index],
             );
           },

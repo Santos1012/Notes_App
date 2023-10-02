@@ -6,15 +6,15 @@ import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_button_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_text_feild_widget.dart';
 
-class AddNoteForm extends StatefulWidget {
-  const AddNoteForm({
+class AddNoteFormBody extends StatefulWidget {
+  const AddNoteFormBody({
     super.key,
   });
   @override
-  State<AddNoteForm> createState() => _AddNoteFormState();
+  State<AddNoteFormBody> createState() => _AddNoteFormBodyState();
 }
 
-class _AddNoteFormState extends State<AddNoteForm> {
+class _AddNoteFormBodyState extends State<AddNoteFormBody> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subTitle;

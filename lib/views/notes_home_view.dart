@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tharwat_notes_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:tharwat_notes_app/views/widgets/add_note_bottom_sheet.dart';
-import 'package:tharwat_notes_app/views/widgets/notes_view_body_widget.dart';
+import 'package:tharwat_notes_app/views/widgets/modal_bottom_sheet_body.dart';
+import 'package:tharwat_notes_app/views/widgets/notes_home_view_body.dart';
 
-class NotesView extends StatelessWidget {
-  const NotesView({super.key});
+class NotesHomeView extends StatelessWidget {
+  const NotesHomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,12 @@ class NotesView extends StatelessWidget {
                 ),
               ),
               context: context,
-              builder: (context) => const AddNoteBottomSheet(),
+              builder: (context) => const ModalBottomSheetBody(),
             );
           },
           child: const Icon(Icons.add),
         ),
-        body: const NotesViewBody(),
+        body: const NotesHomeViewBody(),
       ),
     );
   }
