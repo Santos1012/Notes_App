@@ -4,22 +4,24 @@ import 'package:tharwat_notes_app/views/widgets/edit_notes_text_feilds_widget.da
 
 class EditNoteViewBody extends StatelessWidget {
   const EditNoteViewBody({super.key});
-
+   static TextEditingController titleController = TextEditingController();
+  static TextEditingController contentController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16),
         child: Column(
           children: [
             CustomAppBar(
               title: "Edit Note",
               icon: Icons.done_rounded,
+              onTap: () {},
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            EditNotesTextFeilds()
+            const EditNotesTextFeilds()
           ],
         ),
       ),
