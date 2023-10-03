@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tharwat_notes_app/helpers/fetch_all_notes_function.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_app_bar_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/edit_notes_text_feilds_widget.dart';
@@ -39,6 +40,11 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                     setState(() {
                       autovalidateMode = AutovalidateMode.disabled;
                     });
+                    widget.note.title = EditNoteViewBody.titleController.text;
+                    widget.note.subTitle =
+                        EditNoteViewBody.subTitletController.text;
+                    widget.note.save();
+                    fetchAllNotesFunction(context);
                     EditNoteViewBody.titleController.clear();
                     EditNoteViewBody.subTitletController.clear();
                     formKey.currentState!.save();
