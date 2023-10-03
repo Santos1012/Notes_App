@@ -58,12 +58,13 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
                       autovalidateMode = AutovalidateMode.disabled;
                       formKey.currentState!.save();
                       NoteModel note = NoteModel(
-                          title: title!,
-                          subTitle: subTitle!,
-                          date: customDateFormatFunction(
-                            dateAsString: DateTime.now().toString(),
-                          ),
-                          color: Colors.blue.value);
+                        title: title!,
+                        subTitle: subTitle!,
+                        date: customDateFormatFunction(
+                          dateAsString: DateTime.now().toString(),
+                        ),
+                        color: Colors.blue.value,
+                      );
                       BlocProvider.of<AddNoteCubit>(context).addNote(note);
                     } else {
                       setState(() {
