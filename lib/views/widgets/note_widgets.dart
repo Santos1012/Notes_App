@@ -68,14 +68,35 @@ class NoteWidgets extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 6),
-              child: Text(
-                note.date,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black.withOpacity(.4),
-                ),
-              ),
-            ),
+              child: note.lastEditDate == null
+                  ? Text(
+                      "createdAt: ${note.date}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black.withOpacity(.4),
+                      ),
+                    )
+                  : Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                          "createdAt: ${note.date}",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black.withOpacity(.4),
+                          ),
+                        ),
+                      Text(
+                        "editedAt: ${note.lastEditDate}",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black.withOpacity(.4),
+                          ),
+                        ),
+                    ],
+                  ),
+            )
           ],
         ),
       ),

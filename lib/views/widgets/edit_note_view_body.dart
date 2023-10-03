@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tharwat_notes_app/helpers/custom_edit_date_format_function.dart';
 import 'package:tharwat_notes_app/helpers/fetch_all_notes_function.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_app_bar_widget.dart';
@@ -8,8 +9,6 @@ class EditNoteViewBody extends StatefulWidget {
   final NoteModel note;
 
   const EditNoteViewBody({super.key, required this.note});
-  static TextEditingController titleController = TextEditingController();
-  static TextEditingController subTitletController = TextEditingController();
   @override
   State<EditNoteViewBody> createState() => _EditNoteViewBodyState();
 }
@@ -18,11 +17,13 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
+  TextEditingController titleController = TextEditingController();
+  TextEditingController subTitletController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    if (EditNoteViewBody.titleController.text == "") {
-      EditNoteViewBody.titleController.text = widget.note.title;
-      EditNoteViewBody.subTitletController.text = widget.note.subTitle;
+    if (titleController.text == "" && subTitletController.text == "") {
+      titleController.text = widget.note.title;
+      subTitletController.text = widget.note.subTitle;
     }
     return SafeArea(
       child: Form(
@@ -40,13 +41,17 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                     setState(() {
                       autovalidateMode = AutovalidateMode.disabled;
                     });
-                    widget.note.title = EditNoteViewBody.titleController.text;
-                    widget.note.subTitle =
-                        EditNoteViewBody.subTitletController.text;
-                    widget.note.save();
-                    fetchAllNotesFunction(context);
-                    EditNoteViewBody.titleController.clear();
-                    EditNoteViewBody.subTitletController.clear();
+                    if (widget.note.title != titleController.text ||
+                        widget.note.subTitle != subTitletController.text) {
+                      widget.note.title = titleController.text;
+                      widget.note.lastEditDate = customEditDateFormatFunction(
+                          dateAsString: DateTime.now().toString());
+                      widget.note.subTitle = subTitletController.text;
+                      widget.note.save();
+                      fetchAllNotesFunction(context);
+                    }
+                    titleController.text = "";
+                    subTitletController.text = "";
                     formKey.currentState!.save();
                     Navigator.pop(context);
                   } else {
@@ -59,7 +64,10 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               const SizedBox(
                 height: 20,
               ),
-              const EditNotesTextFeilds()
+              EditNotesTextFeilds(
+                titleController: titleController,
+                subTitletController: subTitletController,
+              )
             ],
           ),
         ),
