@@ -5,12 +5,18 @@ class CustomTextFeild extends StatelessWidget {
   final String labelText;
   final int maxLines;
   final void Function(String? value)? onSaved;
-
-  const CustomTextFeild(
-      {super.key, required this.labelText, this.maxLines = 1, this.onSaved});
+  final TextEditingController? controller;
+  const CustomTextFeild({
+    super.key,
+    required this.labelText,
+    this.maxLines = 1,
+    this.onSaved,
+    this.controller,
+  });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       onSaved: onSaved,
       validator: (value) {
         if (value?.isEmpty ?? true) {

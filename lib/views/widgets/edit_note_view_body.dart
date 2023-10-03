@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_app_bar_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/edit_notes_text_feilds_widget.dart';
 
 class EditNoteViewBody extends StatefulWidget {
-  const EditNoteViewBody({super.key});
+  final NoteModel note;
 
+  const EditNoteViewBody({super.key, required this.note});
+  static TextEditingController titleController = TextEditingController();
+  static TextEditingController subTitletController = TextEditingController();
   @override
   State<EditNoteViewBody> createState() => _EditNoteViewBodyState();
 }
 
 class _EditNoteViewBodyState extends State<EditNoteViewBody> {
-  TextEditingController titleController = TextEditingController();
-  TextEditingController contentController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
+    EditNoteViewBody.titleController.text = widget.note.title;
+    EditNoteViewBody.subTitletController.text = widget.note.subTitle;
     return SafeArea(
       child: Form(
         key: formKey,
