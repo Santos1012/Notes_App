@@ -4,3 +4,5 @@ part of 'notes_cubit.dart';
 abstract class NotesState {}
 
 final class NotesInitialState extends NotesState {}
+
+final class NotesSuccessState extends NotesState {}

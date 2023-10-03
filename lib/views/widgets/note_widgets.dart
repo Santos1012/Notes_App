@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tharwat_notes_app/helpers/fetch_all_notes_function.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/edit_note_view.dart';
 
@@ -52,7 +53,10 @@ class NoteWidgets extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  note.delete();
+                  fetchAllNotesFunction(context);
+                },
                 icon: const Icon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,

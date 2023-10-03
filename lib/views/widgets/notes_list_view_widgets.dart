@@ -13,19 +13,28 @@ class NotesListViewWidgets extends StatelessWidget {
       builder: (context, state) {
         List<NoteModel> notes =
             BlocProvider.of<NotesCubit>(context).notesList ?? [];
-        return ListView.separated(
-          itemCount: notes.length,
-          itemBuilder: (context, index) {
-            return NoteWidgets(
-              note: notes[index],
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(
-              height: 6,
-            );
-          },
-        );
+        return notes.isEmpty
+            ? const Center(
+                child: Text(
+                  "No Notes yet",
+                  style: TextStyle(
+                    fontFamily: "poppines",
+                    color: Colors.white,
+                    fontSize: 28,
+                  ),
+                ),
+              )
+            : ListView.separated(
+                itemCount: notes.length,
+                itemBuilder: (context, index) {
+                  return NoteWidgets(
+                    note: notes[index],
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(height: 6);
+                },
+              );
       },
     );
   }
