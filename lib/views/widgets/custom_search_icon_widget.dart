@@ -4,7 +4,6 @@ class CustomIconButton extends StatelessWidget {
   final IconData icon;
 
   const CustomIconButton({super.key, required this.icon});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,9 +13,9 @@ class CustomIconButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: Colors.white.withOpacity(0.05),
       ),
-      child:  Center(
+      child: Center(
         child: Icon(
-         icon,
+          icon,
           size: 28,
         ),
       ),

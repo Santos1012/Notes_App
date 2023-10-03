@@ -32,7 +32,9 @@ class _NotesHomeViewBodyState extends State<NotesHomeViewBody> {
             SizedBox(
               height: 20,
             ),
-            Expanded(child: NotesListViewWidgets()),
+            Expanded(
+              child: NotesListViewWidgets(),
+            ),
           ],
         ),
       ),

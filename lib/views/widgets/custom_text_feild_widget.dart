@@ -7,11 +7,7 @@ class CustomTextFeild extends StatelessWidget {
   final void Function(String? value)? onSaved;
 
   const CustomTextFeild(
-      {super.key,
-      required this.labelText,
-       this.maxLines=1,
-      this.onSaved});
-
+      {super.key, required this.labelText, this.maxLines = 1, this.onSaved});
   @override
   Widget build(BuildContext context) {
     return TextFormField(

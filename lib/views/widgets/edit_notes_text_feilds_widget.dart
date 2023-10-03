@@ -6,7 +6,7 @@ class EditNotesTextFeilds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Column(
+    return const Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         CustomTextFeild(

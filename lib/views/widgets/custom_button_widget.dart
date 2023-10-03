@@ -11,7 +11,9 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
         backgroundColor: kPrimaryColor,
         fixedSize: Size(
           MediaQuery.of(context).size.width,
@@ -24,7 +26,9 @@ class CustomButton extends StatelessWidget {
             )
           : const Text(
               "Add",
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(
+                color: Colors.black,
+              ),
             ),
     );
   }

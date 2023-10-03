@@ -32,7 +32,9 @@ class NotesListViewWidgets extends StatelessWidget {
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(height: 6);
+                  return const SizedBox(
+                    height: 6,
+                  );
                 },
               );
       },
