@@ -19,8 +19,10 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    EditNoteViewBody.titleController.text = widget.note.title;
-    EditNoteViewBody.subTitletController.text = widget.note.subTitle;
+    if (EditNoteViewBody.titleController.text == "") {
+      EditNoteViewBody.titleController.text = widget.note.title;
+      EditNoteViewBody.subTitletController.text = widget.note.subTitle;
+    }
     return SafeArea(
       child: Form(
         key: formKey,
@@ -37,6 +39,8 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                     setState(() {
                       autovalidateMode = AutovalidateMode.disabled;
                     });
+                    EditNoteViewBody.titleController.clear();
+                    EditNoteViewBody.subTitletController.clear();
                     formKey.currentState!.save();
                     Navigator.pop(context);
                   } else {
