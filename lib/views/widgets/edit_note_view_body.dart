@@ -37,28 +37,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 title: "Edit Note",
                 icon: Icons.done_rounded,
                 onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    setState(() {
-                      autovalidateMode = AutovalidateMode.disabled;
-                    });
-                    if (widget.note.title != titleController.text ||
-                        widget.note.subTitle != subTitletController.text) {
-                      widget.note.title = titleController.text;
-                      widget.note.lastEditDate = customEditDateFormatFunction(
-                          dateAsString: DateTime.now().toString());
-                      widget.note.subTitle = subTitletController.text;
-                      widget.note.save();
-                      fetchAllNotesFunction(context);
-                    }
-                    titleController.text = "";
-                    subTitletController.text = "";
-                    formKey.currentState!.save();
-                    Navigator.pop(context);
-                  } else {
-                    setState(() {
-                      autovalidateMode = AutovalidateMode.always;
-                    });
-                  }
+                  cheakTextFeildValidateFunction(context);
                 },
               ),
               const SizedBox(
@@ -73,5 +52,34 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
         ),
       ),
     );
+  }
+
+  void cheakTextFeildValidateFunction(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      setState(() {
+        autovalidateMode = AutovalidateMode.disabled;
+      });
+      editNotesByHiveFunction(context);
+      titleController.text = "";
+      subTitletController.text = "";
+      formKey.currentState!.save();
+      Navigator.pop(context);
+    } else {
+      setState(() {
+        autovalidateMode = AutovalidateMode.always;
+      });
+    }
+  }
+
+  void editNotesByHiveFunction(BuildContext context) {
+    if (widget.note.title != titleController.text ||
+        widget.note.subTitle != subTitletController.text) {
+      widget.note.title = titleController.text;
+      widget.note.lastEditDate =
+          customEditDateFormatFunction(dateAsString: DateTime.now().toString());
+      widget.note.subTitle = subTitletController.text;
+      widget.note.save();
+      fetchAllNotesFunction(context);
+    }
   }
 }

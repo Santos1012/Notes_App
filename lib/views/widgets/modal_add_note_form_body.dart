@@ -54,23 +54,7 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
                 return CustomButton(
                   isLoading: state is AddNoteLoading ? true : false,
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      autovalidateMode = AutovalidateMode.disabled;
-                      formKey.currentState!.save();
-                      NoteModel note = NoteModel(
-                          title: title!,
-                          subTitle: subTitle!,
-                          date: customDateFormatFunction(
-                            dateAsString: DateTime.now().toString(),
-                          ),
-                          color: Colors.blue.value,
-                          lastEditDate: null);
-                      BlocProvider.of<AddNoteCubit>(context).addNote(note);
-                    } else {
-                      setState(() {
-                        autovalidateMode = AutovalidateMode.always;
-                      });
-                    }
+                    checkTextFeildValidateFunction(context);
                   },
                 );
               },
@@ -82,5 +66,25 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
         ),
       ),
     );
+  }
+
+  void checkTextFeildValidateFunction(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      autovalidateMode = AutovalidateMode.disabled;
+      formKey.currentState!.save();
+      NoteModel note = NoteModel(
+          title: title!,
+          subTitle: subTitle!,
+          date: customDateFormatFunction(
+            dateAsString: DateTime.now().toString(),
+          ),
+          color: Colors.blue.value,
+          lastEditDate: null);
+      BlocProvider.of<AddNoteCubit>(context).addNote(note);
+    } else {
+      setState(() {
+        autovalidateMode = AutovalidateMode.always;
+      });
+    }
   }
 }
