@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tharwat_notes_app/constants.dart';
 import 'package:tharwat_notes_app/helpers/text_feild_edit_validate_function.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/widgets/edit_color_colors_list_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_app_bar_widget.dart';
-import 'package:tharwat_notes_app/views/widgets/edit_notes_text_feilds_widget.dart';
+import 'package:tharwat_notes_app/views/widgets/notes_text_feilds_widget.dart';
 
 class EditNoteViewBody extends StatefulWidget {
   final NoteModel note;
@@ -58,9 +59,20 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               const SizedBox(
                 height: 20,
               ),
-              EditNotesTextFeilds(
+              NotesTextFeilds(
                 titleController: titleController,
                 subTitletController: subTitletController,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Row(
+                children: [
+                  Text(
+                    "Note Color",
+                    style: TextStyle(color: kPrimaryColor),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 20,
