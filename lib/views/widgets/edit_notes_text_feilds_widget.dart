@@ -5,7 +5,10 @@ class EditNotesTextFeilds extends StatelessWidget {
   final TextEditingController titleController;
   final TextEditingController subTitletController;
 
-  const EditNotesTextFeilds({super.key, required this.titleController, required this.subTitletController});
+  const EditNotesTextFeilds(
+      {super.key,
+      required this.titleController,
+      required this.subTitletController});
 
   @override
   Widget build(BuildContext context) {

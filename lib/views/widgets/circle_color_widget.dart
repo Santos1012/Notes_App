@@ -12,10 +12,12 @@ class CircleColorWidget extends StatelessWidget {
     return CircleAvatar(
       radius: 30,
       backgroundColor: color,
-      child:isSelectedColor? const Icon(
-        Icons.done_outline,
-        color: Colors.black,
-      ):null,
+      child: isSelectedColor
+          ? const Icon(
+              Icons.done_outline,
+              color: Colors.black,
+            )
+          : null,
     );
   }
 }

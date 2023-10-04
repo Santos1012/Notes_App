@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tharwat_notes_app/cubits/add_note_cubit/add_note_cubit.dart';
-import 'package:tharwat_notes_app/helpers/custom_date_format_function.dart';
-import 'package:tharwat_notes_app/models/note_model.dart';
+import 'package:tharwat_notes_app/helpers/text_feild_add_validate_function.dart';
 import 'package:tharwat_notes_app/views/widgets/select_color_colors_list_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_button_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_text_feild_widget.dart';
@@ -60,7 +59,14 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
                 return CustomButton(
                   isLoading: state is AddNoteLoading ? true : false,
                   onPressed: () {
-                    checkTextFeildValidateFunction(context);
+                    textFeildAddValidateFunction(context,
+                        formKey: formKey,
+                        autovalidateMode: autovalidateMode,
+                        title: title!,
+                        subTitle: subTitle!);
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
                   },
                 );
               },
@@ -72,25 +78,5 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
         ),
       ),
     );
-  }
-
-  void checkTextFeildValidateFunction(BuildContext context) {
-    if (formKey.currentState!.validate()) {
-      autovalidateMode = AutovalidateMode.disabled;
-      formKey.currentState!.save();
-      NoteModel note = NoteModel(
-          title: title!,
-          subTitle: subTitle!,
-          date: customDateFormatFunction(
-            dateAsString: DateTime.now().toString(),
-          ),
-          color: Colors.blue.value,
-          lastEditDate: null);
-      BlocProvider.of<AddNoteCubit>(context).addNote(note);
-    } else {
-      setState(() {
-        autovalidateMode = AutovalidateMode.always;
-      });
-    }
   }
 }

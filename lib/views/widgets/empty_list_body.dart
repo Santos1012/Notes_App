@@ -8,14 +8,14 @@ class EmptyListBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-        child: Text(
-          "No Notes yet",
-          style: TextStyle(
-            fontFamily: "poppines",
-            color: Colors.white,
-            fontSize: 28,
-          ),
+      child: Text(
+        "No Notes yet",
+        style: TextStyle(
+          fontFamily: "poppines",
+          color: Colors.white,
+          fontSize: 28,
         ),
-      );
+      ),
+    );
   }
 }

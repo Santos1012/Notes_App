@@ -77,25 +77,25 @@ class NoteWidgets extends StatelessWidget {
                       ),
                     )
                   : Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
                           "createdAt: ${note.date}",
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.black.withOpacity(.4),
                           ),
                         ),
-                      Text(
-                        "editedAt: ${note.lastEditDate}",
+                        Text(
+                          "editedAt: ${note.lastEditDate}",
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.black.withOpacity(.4),
                           ),
                         ),
-                    ],
-                  ),
+                      ],
+                    ),
             )
           ],
         ),

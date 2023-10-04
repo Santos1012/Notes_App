@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tharwat_notes_app/helpers/custom_edit_date_format_function.dart';
-import 'package:tharwat_notes_app/helpers/fetch_all_notes_function.dart';
+import 'package:tharwat_notes_app/helpers/text_feild_edit_validate_function.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
-import 'package:tharwat_notes_app/views/notes_home_view.dart';
 import 'package:tharwat_notes_app/views/widgets/edit_color_colors_list_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_app_bar_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/edit_notes_text_feilds_widget.dart';
@@ -39,7 +37,22 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 title: "Edit Note",
                 icon: Icons.done_rounded,
                 onTap: () {
-                  cheakTextFeildValidateFunction(context);
+                  if (formKey.currentState!.validate()) {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.disabled;
+                    });
+                    textFeildEditValidateFunction(
+                      context: context,
+                      note: widget.note,
+                      titleController: titleController,
+                      subTitletController: subTitletController,
+                      formKey: formKey,
+                    );
+                  } else {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
+                  }
                 },
               ),
               const SizedBox(
@@ -53,46 +66,12 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 height: 20,
               ),
               EditColorColorsListView(
-              
-                currentColorValue: widget.note.color,
+                note: widget.note,
               )
             ],
           ),
         ),
       ),
     );
-  }
-
-  void cheakTextFeildValidateFunction(BuildContext context) {
-    if (formKey.currentState!.validate()) {
-      setState(() {
-        autovalidateMode = AutovalidateMode.disabled;
-      });
-      editNotesByHiveFunction(context);
-      titleController.text = "";
-      subTitletController.text = "";
-      formKey.currentState!.save();
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const NotesHomeView(),
-        ),
-      );
-    } else {
-      setState(() {
-        autovalidateMode = AutovalidateMode.always;
-      });
-    }
-  }
-
-  void editNotesByHiveFunction(BuildContext context) {
-    if (widget.note.title != titleController.text ||
-        widget.note.subTitle != subTitletController.text) {
-      widget.note.title = titleController.text;
-      widget.note.lastEditDate =
-          customEditDateFormatFunction(dateAsString: DateTime.now().toString());
-      widget.note.subTitle = subTitletController.text;
-      widget.note.save();
-      fetchAllNotesFunction(context);
-    }
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -15,9 +13,8 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   //registerAdapter must be write befote openBox
   Hive.registerAdapter(NoteModelAdapter());
+  // ignore: unused_local_variable
   var x = await Hive.openBox<NoteModel>(kNotesBox);
-  log("${x.length}");
-
   runApp(const NotesApp());
 }
 

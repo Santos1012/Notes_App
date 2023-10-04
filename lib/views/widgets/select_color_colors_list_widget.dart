@@ -6,7 +6,6 @@ import 'package:tharwat_notes_app/views/widgets/circle_color_widget.dart';
 
 class SelectColorColorsListView extends StatefulWidget {
   const SelectColorColorsListView({super.key});
-
   @override
   State<SelectColorColorsListView> createState() =>
       _SelectColorColorsListViewState();
