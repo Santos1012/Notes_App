@@ -3,6 +3,7 @@ import 'package:tharwat_notes_app/helpers/custom_edit_date_format_function.dart'
 import 'package:tharwat_notes_app/helpers/fetch_all_notes_function.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/notes_home_view.dart';
+import 'package:tharwat_notes_app/views/widgets/edit_color_colors_list_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_app_bar_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/edit_notes_text_feilds_widget.dart';
 
@@ -47,6 +48,13 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               EditNotesTextFeilds(
                 titleController: titleController,
                 subTitletController: subTitletController,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              EditColorColorsListView(
+              
+                currentColorValue: widget.note.color,
               )
             ],
           ),

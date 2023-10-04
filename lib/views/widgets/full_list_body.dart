@@ -6,14 +6,15 @@ import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/widgets/dismissible_background_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/note_widgets.dart';
 
-class NoteEmptyListBody extends StatelessWidget {
+class FullListBody extends StatelessWidget {
   final List<NoteModel> notes;
 
-  const NoteEmptyListBody({super.key, required this.notes});
+  const FullListBody({super.key, required this.notes});
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: const BouncingScrollPhysics(),
       itemCount: notes.length,
       itemBuilder: (context, index) {
         return Dismissible(
