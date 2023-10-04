@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tharwat_notes_app/constants.dart';
+import 'package:tharwat_notes_app/helpers/custom_border.dart';
+import 'package:tharwat_notes_app/helpers/keyboard_type_function.dart';
 
 class CustomTextFeild extends StatelessWidget {
   final String labelText;
@@ -25,7 +27,7 @@ class CustomTextFeild extends StatelessWidget {
           return null;
         }
       },
-      keyboardType: keyboardTypeFunction(),
+      keyboardType: keyboardTypeFunction(labelText: labelText),
       maxLines: maxLines,
       cursorColor: kPrimaryColor,
       decoration: InputDecoration(
@@ -37,21 +39,6 @@ class CustomTextFeild extends StatelessWidget {
         labelStyle: const TextStyle(
           color: kPrimaryColor,
         ),
-      ),
-    );
-  }
-
-  TextInputType keyboardTypeFunction() {
-    return labelText == "Title" ? TextInputType.text : TextInputType.multiline;
-  }
-
-  OutlineInputBorder customBorder({required Color borderColor}) {
-    return OutlineInputBorder(
-      borderRadius: const BorderRadius.all(
-        Radius.circular(10),
-      ),
-      borderSide: BorderSide(
-        color: borderColor,
       ),
     );
   }
