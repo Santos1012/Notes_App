@@ -6,13 +6,10 @@ import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/widgets/dismissible_background_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/note_widgets.dart';
 
-class NotEmptyListBody extends StatelessWidget {
-  const NotEmptyListBody({
-    super.key,
-    required this.notes,
-  });
-
+class NoteEmptyListBody extends StatelessWidget {
   final List<NoteModel> notes;
+
+  const NoteEmptyListBody({super.key, required this.notes});
 
   @override
   Widget build(BuildContext context) {
