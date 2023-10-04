@@ -18,8 +18,8 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
   int selectedColorValue = Colors.blue.value;
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? title, subTitle;
-
+ TextEditingController titleController = TextEditingController();
+  TextEditingController subTitletController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -33,18 +33,14 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
             ),
             CustomTextFeild(
               labelText: "Title",
-              onSaved: (value) {
-                title = value;
-              },
+              controller: titleController,
             ),
             const SizedBox(
               height: 20,
             ),
             CustomTextFeild(
               labelText: "Content",
-              onSaved: (value) {
-                subTitle = value;
-              },
+              controller: subTitletController,
               maxLines: 5,
             ),
             const SizedBox(
@@ -59,14 +55,19 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
                 return CustomButton(
                   isLoading: state is AddNoteLoading ? true : false,
                   onPressed: () {
-                    textFeildAddValidateFunction(context,
+                    if (formKey.currentState!.validate()) {
+                      textFeildAddValidateFunction(
+                        context,
                         formKey: formKey,
                         autovalidateMode: autovalidateMode,
-                        title: title!,
-                        subTitle: subTitle!);
-                    setState(() {
-                      autovalidateMode = AutovalidateMode.always;
-                    });
+                        titleController: titleController,
+                        subTitletController: subTitletController,
+                      );
+                    } else {
+                      setState(() {
+                        autovalidateMode = AutovalidateMode.always;
+                      });
+                    }
                   },
                 );
               },
