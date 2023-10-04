@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tharwat_notes_app/helpers/custom_edit_date_format_function.dart';
 import 'package:tharwat_notes_app/helpers/fetch_all_notes_function.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
+import 'package:tharwat_notes_app/views/notes_home_view.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_app_bar_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/edit_notes_text_feilds_widget.dart';
 
@@ -63,7 +64,11 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
       titleController.text = "";
       subTitletController.text = "";
       formKey.currentState!.save();
-      Navigator.pop(context);
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const NotesHomeView(),
+        ),
+      );
     } else {
       setState(() {
         autovalidateMode = AutovalidateMode.always;
