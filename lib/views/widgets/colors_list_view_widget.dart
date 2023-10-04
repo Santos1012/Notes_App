@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tharwat_notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:tharwat_notes_app/views/widgets/circle_color_widget.dart';
 
 class ColorsListViewWidget extends StatefulWidget {
@@ -11,7 +13,7 @@ class ColorsListViewWidget extends StatefulWidget {
 }
 
 class _ColorsListViewWidgetState extends State<ColorsListViewWidget> {
-  int currentIndex=0 ;
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,6 +26,8 @@ class _ColorsListViewWidgetState extends State<ColorsListViewWidget> {
                 setState(() {
                   currentIndex = index;
                 });
+                BlocProvider.of<AddNoteCubit>(context).color =
+                    widget.colorsList[currentIndex];
               },
               child: CircleColorWidget(
                 color: widget.colorsList[index],
