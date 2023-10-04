@@ -6,20 +6,17 @@ import 'package:tharwat_notes_app/helpers/keyboard_type_function.dart';
 class CustomTextFeild extends StatelessWidget {
   final String labelText;
   final int maxLines;
-  final void Function(String? value)? onSaved;
-  final TextEditingController? controller;
+  final TextEditingController controller;
   const CustomTextFeild({
     super.key,
     required this.labelText,
     this.maxLines = 1,
-    this.onSaved,
-    this.controller,
+   required this.controller,
   });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      onSaved: onSaved,
       validator: (value) {
         if (value?.isEmpty ?? true) {
           return "Field is Required";
