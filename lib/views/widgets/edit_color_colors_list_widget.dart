@@ -15,11 +15,14 @@ class EditColorColorsListView extends StatefulWidget {
 }
 
 class _EditColorColorsListViewState extends State<EditColorColorsListView> {
-  int? currentColor;
-
+  late int currentColor;
+  @override
+  void initState() {
+    currentColor = widget.note.color;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    currentColor = widget.note.color;
 
     return SizedBox(
       height: 60,
@@ -32,7 +35,7 @@ class _EditColorColorsListViewState extends State<EditColorColorsListView> {
               setState(() {
                 currentColor = kColorsList[index].value;
               });
-              widget.note.color = currentColor!;
+              widget.note.color = currentColor;
               widget.note.save();
               fetchAllNotesFunction(context);
             },
