@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tharwat_notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:tharwat_notes_app/helpers/custom_date_format_function.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
+import 'package:tharwat_notes_app/views/widgets/colors_list_view_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_button_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_text_feild_widget.dart';
 
@@ -15,6 +16,16 @@ class AddNoteFormBody extends StatefulWidget {
 }
 
 class _AddNoteFormBodyState extends State<AddNoteFormBody> {
+  List<Color> colorsList = const[
+    Colors.red,
+    Colors.green,
+    Colors.yellow,
+    Colors.blue,
+    Colors.white,
+    Colors.teal,
+    Colors.deepPurple,
+  ];
+  int selectedColorValue = Colors.blue.value;
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subTitle;
@@ -45,6 +56,12 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
                 subTitle = value;
               },
               maxLines: 5,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ColorsListViewWidget(
+              colorsList: colorsList,
             ),
             const SizedBox(
               height: 35,
