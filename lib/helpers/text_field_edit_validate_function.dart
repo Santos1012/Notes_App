@@ -4,23 +4,23 @@ import 'package:tharwat_notes_app/helpers/fetch_all_notes_function.dart';
 import 'package:tharwat_notes_app/models/note_model.dart';
 import 'package:tharwat_notes_app/views/notes_home_view.dart';
 
-void textFeildEditValidateFunction(
+void textFieldEditValidateFunction(
     {required BuildContext context,
     required NoteModel note,
     required TextEditingController titleController,
-    required TextEditingController subTitletController,
+    required TextEditingController subTitleController,
     required GlobalKey<FormState> formKey}) {
   if (note.title != titleController.text ||
-      note.subTitle != subTitletController.text) {
+      note.subTitle != subTitleController.text) {
     note.title = titleController.text;
     note.lastEditDate =
         customEditDateFormatFunction(dateAsString: DateTime.now().toString());
-    note.subTitle = subTitletController.text;
+    note.subTitle = subTitleController.text;
     note.save();
     fetchAllNotesFunction(context);
   }
   titleController.text = "";
-  subTitletController.text = "";
+  subTitleController.text = "";
   formKey.currentState!.save();
   Navigator.of(context).pushReplacement(
     MaterialPageRoute(

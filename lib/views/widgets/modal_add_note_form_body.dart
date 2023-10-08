@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tharwat_notes_app/constants.dart';
 import 'package:tharwat_notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:tharwat_notes_app/helpers/text_feild_add_validate_function.dart';
-import 'package:tharwat_notes_app/views/widgets/notes_text_feilds_widget.dart';
+import 'package:tharwat_notes_app/views/widgets/notes_text_fields_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/select_color_colors_list_widget.dart';
 import 'package:tharwat_notes_app/views/widgets/custom_button_widget.dart';
 
@@ -20,7 +20,7 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   TextEditingController titleController = TextEditingController();
-  TextEditingController subTitletController = TextEditingController();
+  TextEditingController subTitleController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -32,9 +32,9 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
             const SizedBox(
               height: 32,
             ),
-            NotesTextFeilds(
+            NotesTextFields(
                 titleController: titleController,
-                subTitletController: subTitletController),
+                subTitleController: subTitleController),
             const SizedBox(
               height: 20,
             ),
@@ -59,12 +59,12 @@ class _AddNoteFormBodyState extends State<AddNoteFormBody> {
                   isLoading: state is AddNoteLoading ? true : false,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      textFeildAddValidateFunction(
+                      textFieldAddValidateFunction(
                         context,
                         formKey: formKey,
                         autovalidateMode: autovalidateMode,
                         titleController: titleController,
-                        subTitletController: subTitletController,
+                        subTitleController: subTitleController,
                       );
                     } else {
                       setState(() {

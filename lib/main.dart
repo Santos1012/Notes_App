@@ -11,7 +11,7 @@ import 'constants.dart';
 void main() async {
   await Hive.initFlutter();
   Bloc.observer = SimpleBlocObserver();
-  //registerAdapter must be write befote openBox
+  //registerAdapter must be write before openBox
   Hive.registerAdapter(NoteModelAdapter());
   // ignore: unused_local_variable
   var x = await Hive.openBox<NoteModel>(kNotesBox);

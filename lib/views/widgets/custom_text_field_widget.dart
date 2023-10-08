@@ -3,15 +3,15 @@ import 'package:tharwat_notes_app/constants.dart';
 import 'package:tharwat_notes_app/helpers/custom_border.dart';
 import 'package:tharwat_notes_app/helpers/keyboard_type_function.dart';
 
-class CustomTextFeild extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final String labelText;
   final int maxLines;
   final TextEditingController controller;
-  const CustomTextFeild({
+  const CustomTextField({
     super.key,
     required this.labelText,
     this.maxLines = 1,
-   required this.controller,
+    required this.controller,
   });
   @override
   Widget build(BuildContext context) {

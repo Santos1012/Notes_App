@@ -22,7 +22,7 @@ class NoteModel extends HiveObject {
     required this.lastEditDate,
   });
 }
-//to cretae note_model.g.dart
+//to create note_model.g.dart
 /*
 first :
 write => part 'file_name.g.dart';

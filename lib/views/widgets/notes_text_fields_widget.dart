@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:tharwat_notes_app/views/widgets/custom_text_feild_widget.dart';
+import 'package:tharwat_notes_app/views/widgets/custom_text_field_widget.dart';
 
-class NotesTextFeilds extends StatelessWidget {
+class NotesTextFields extends StatelessWidget {
   final TextEditingController titleController;
-  final TextEditingController subTitletController;
+  final TextEditingController subTitleController;
 
-  const NotesTextFeilds(
+  const NotesTextFields(
       {super.key,
       required this.titleController,
-      required this.subTitletController});
+      required this.subTitleController});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        CustomTextFeild(
+        CustomTextField(
           labelText: "Note Title",
           controller: titleController,
         ),
         const SizedBox(
           height: 20,
         ),
-        CustomTextFeild(
+        CustomTextField(
           labelText: "Note Content",
           maxLines: 5,
-          controller: subTitletController,
+          controller: subTitleController,
         ),
       ],
     );
